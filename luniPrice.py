@@ -6,12 +6,9 @@ from keepAlive import keep_alive
 import asyncio
 from datetime import datetime as dt
 
-tokenPrice = os.getenv('tokenPrice')
+token = os.getenv('token')
 
 luniPrice = discord.Client()
-
-currentTime = dt.now()
-time = currentTime.strftime('%H:%M:%S')
 
 @luniPrice.event
 async def on_ready():
@@ -26,6 +23,9 @@ async def presence():
 
     try:
     
+      currentTime = dt.now()
+      time = currentTime.strftime('%H:%M:%S')
+
       url = "https://coinmarketcap.com/currencies/luni/"
       # getting the request from url 
       data = requests.get(url)
@@ -38,9 +38,10 @@ async def presence():
 
       await luniPrice.change_presence(activity = discord.Activity(type = 3, name = 'LUNI : ' + price))
     
-      print('Price retrieved @' + price)
-      print(time + ' - Retrieving price...')
-      await asyncio.sleep(1)
+      print(time + ' - Price retrieved @ ' + price)
+      print('.........................................')
+      
+      await asyncio.sleep(5)
 
     except:
 
@@ -49,4 +50,4 @@ async def presence():
 
 keep_alive()
 
-luniPrice.run(tokenPrice)
+luniPrice.run('OTMzMjA1NTcwNTQ5MzI5OTQw.YeeJag.5bscS3FcHj3hALOT6_PVHo7PUMY')
