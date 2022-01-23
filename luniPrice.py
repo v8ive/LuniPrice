@@ -36,7 +36,7 @@ async def presence():
     
       print('Price retrieved @' + price)
 
-      await asyncio.sleep(.1)
+      await asyncio.sleep(1)
 
     except:
 
