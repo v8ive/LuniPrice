@@ -4,10 +4,14 @@ from bs4 import BeautifulSoup as BS
 import requests
 from keepAlive import keep_alive
 import asyncio
+from datetime import datetime as dt
 
 tokenPrice = os.getenv('tokenPrice')
 
 luniPrice = discord.Client()
+
+currentTime = dt.now()
+time = currentTime.strftime('%H:%M:%S')
 
 @luniPrice.event
 async def on_ready():
@@ -35,7 +39,7 @@ async def presence():
       await luniPrice.change_presence(activity = discord.Activity(type = 3, name = 'LUNI : ' + price))
     
       print('Price retrieved @' + price)
-      print('Retrieving price...')
+      print(time + ' - Retrieving price...')
       await asyncio.sleep(1)
 
     except:
