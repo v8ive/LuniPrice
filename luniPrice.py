@@ -50,4 +50,4 @@ async def presence():
 
 keep_alive()
 
-luniPrice.run('OTMzMjA1NTcwNTQ5MzI5OTQw.YeeJag.5bscS3FcHj3hALOT6_PVHo7PUMY')
+luniPrice.run('')
