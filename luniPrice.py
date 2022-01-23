@@ -35,7 +35,7 @@ async def presence():
       await luniPrice.change_presence(activity = discord.Activity(type = 3, name = 'LUNI : ' + price))
     
       print('Price retrieved @' + price)
-
+      print('Retrieving price...')
       await asyncio.sleep(1)
 
     except:
