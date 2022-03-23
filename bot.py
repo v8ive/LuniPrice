@@ -1,8 +1,9 @@
-import discord, os, asyncio, requests
+import discord, asyncio, requests
 from bs4 import BeautifulSoup as BS
 from datetime import datetime as dt
+from decouple import config
 
-token = os.getenv('token')
+token = config('token')
 
 bot = discord.Client()
 
