@@ -1,8 +1,8 @@
-import discord, os, asyncio, requests
-from bs4 import BeautifulSoup as BS
+import discord, asyncio, terra
+from decouple import config
 from datetime import datetime as dt
 
-token = os.getenv('token')
+token = config('token')
 
 bot = discord.Client()
 
@@ -21,23 +21,16 @@ async def presence():
     
       currentTime = dt.now()
       time = currentTime.strftime('%H:%M:%S')
+      amount = 1
+      price = float(terra.swap(amount, 'luni'))
+      price = str(price/1000000)
 
-      url = "https://coinmarketcap.com/currencies/luni/"
-      # getting the request from url 
-      data = requests.get(url)
-  
-      # converting the text 
-      soup = BS(data.text, 'html.parser')
-  
-      # finding meta info for the current price
-      price = soup.find("div", class_ ="priceValue").text
-
-      await bot.change_presence(activity = discord.Activity(type = 3, name = 'LUNI : ' + price))
+      await bot.change_presence(activity = discord.Activity(type = 3, name = 'LUNI : $' + price))
     
       print(time + ' - Price retrieved @ ' + price)
       print('.........................................')
       
-      await asyncio.sleep(5)
+      await asyncio.sleep(10)
 
     except:
 
