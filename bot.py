@@ -1,6 +1,7 @@
 import discord, asyncio, terra
 from decouple import config
 from datetime import datetime as dt
+from decouple import config
 
 token = config('token')
 
